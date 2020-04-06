@@ -81,6 +81,10 @@ then
     echo "docker-compose up -d" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
     cd ..
 
+    cd volumes/
+    rm -f restore.sh
+    cd ..
+    
     echo "     Backup kann mit:"
     echo " "
     echo "     cd ${DIRECTORY_NAME}/ && ./backups/${DIRECTORY_NAME}_${DATESTRING}/restore.sh"
