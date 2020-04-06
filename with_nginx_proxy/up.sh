@@ -1,5 +1,7 @@
 #!/bin/bash
 
+docker network create service_network
+
 cd nginx-proxy
 docker-compose up -d
 cd ..
