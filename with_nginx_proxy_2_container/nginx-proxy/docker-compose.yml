@@ -26,6 +26,8 @@ services:
     restart: always
     depends_on:
       - nginx-proxy
+    environment:
+      - DEFAULT_EMAIL=${ENV_LETSENCRYPT_DEFAULT_EMAIL}
     volumes:
       - ./volumes/SERVICE_NGINX_PROXY_DATA/conf.d:/etc/nginx/conf.d
       - ./volumes/SERVICE_NGINX_PROXY_DATA/vhost.d:/etc/nginx/vhost.d
