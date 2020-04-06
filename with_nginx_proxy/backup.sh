@@ -85,7 +85,7 @@ then
     echo " "
     echo "     cd ${DIRECTORY}"
     echo "     docker-compose down"
-    echo "     rsync -Aaxv --delete backups/backups/${DIRECTORY_NAME}_full_${DATESTRING}/ volumes/"
+    echo "     rsync -Aaxv --delete backups/${DIRECTORY_NAME}_full_${DATESTRING}/ volumes/"
     echo "     docker-compose up -d"
     echo " "
     echo "     wieder eingespielt werden. "
