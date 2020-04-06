@@ -92,12 +92,14 @@ then
     chmod +x restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
 
     echo "#!/bin/bash" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
-    echo "cd ${DIRECTORY}" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
+    #echo "cd ${DIRECTORY}" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
     echo "docker-compose down" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
     echo "rsync -Aaxv --delete backups/${DIRECTORY_NAME}_${DATESTRING}/ volumes/" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
     echo "docker-compose up -d" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
     echo " "
-
+    echo "     cd nextcloud/"
+    echo "     ./backups/restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh"
+    echo " "
     cd ..
 
     echo "     wieder eingespielt werden. "
