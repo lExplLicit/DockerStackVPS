@@ -3,7 +3,7 @@ DockerStack with Nextcloud, Bitwarden and Nginx as a Proxy.
 
 ## Installation (with_nginx_proxy)
 
-```
+```bash
 git clone https://github.com/lExplLicit/DockerStackVPS.git
 
 cd DockerStackVPS/with_nginx_proxy
@@ -26,13 +26,13 @@ docker exec -u www-data SERVICE_NEXTCLOUD php occ db:convert-filecache-bigint
 
 ## Backup container (with_nginx_proxy)
 
-```
+```bash
 ./backup.sh <container_dir>
 ```
 
 ## Restore container (with_nginx_proxy)
 
-```
+```bash
 cd <container_dir>
 ./backups/<backup_name>/restore.sh
 ```
