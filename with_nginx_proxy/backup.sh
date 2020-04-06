@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p backups
+
 
 DIRECTORY=$1
 
@@ -21,6 +21,7 @@ last_char=${STR:length-1:1}
 DIRECTORY=${STR}
 
 cd ${DIRECTORY}
+mkdir -p backups
 
 if [ ! -r "volumes/" ] 
 then 
