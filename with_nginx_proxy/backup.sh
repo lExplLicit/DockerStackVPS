@@ -47,7 +47,7 @@ echo "     Backup wird durchgeführt..."
 
 rsync -Aax volumes/ backups/backup_full_${DATESTRING}/ &> /dev/null
 
-echo "     Backup wurde erstellt."
+# echo "     Backup wurde erstellt."
 echo " "
 #echo "     Backup wird komprimiert..."
 #echo " "
