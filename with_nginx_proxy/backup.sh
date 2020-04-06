@@ -1,5 +1,5 @@
 #!/bin/bash
-
+mkdir -p backups
 
 DIRECTORY=$1
 
@@ -44,25 +44,25 @@ docker-compose down &> /dev/null
 
 echo "     Backup wird durchgeführt..."
 
-rsync -Aax volumes/ backup_full_${DATESTRING}/ &> /dev/null
+rsync -Aax volumes/ backups/backup_full_${DATESTRING}/ &> /dev/null
 
 echo "     Backup wurde erstellt."
 echo " "
 echo "     Backup wird komprimiert..."
 echo " "
-zip -r backup_full_${DATESTRING}.zip backup_full_${DATESTRING}/ &> /dev/null
+zip -r backups/backup_full_${DATESTRING}.zip backups/backup_full_${DATESTRING}/ &> /dev/null
 
-rm -rf backup_full_${DATESTRING}/ &> /dev/null
+rm -rf backups/backup_full_${DATESTRING}/ &> /dev/null
 
-FILE="backup_full_${DATESTRING}.zip"
+FILE="backups/backup_full_${DATESTRING}.zip"
 if [ -f "$FILE" ]
 then
     echo "     Backup wurde erstellt: "
     echo " "
-    echo "     backup_full_${DATESTRING}.zip"
+    echo "     backups/backup_full_${DATESTRING}.zip"
     echo " "
     echo "     Backup muss mit 'unzip -X -K <filename>' entpackt"
-    echo "     und mit 'rsync -Aaxv --delete <backupname>/ volumes/' wieder"
+    echo "     und mit 'rsync -Aaxv --delete backups/<backupname>/ volumes/' wieder"
     echo "     eingespielt werden. "
     echo " "
     echo "------------------------------------------------------------------------"
