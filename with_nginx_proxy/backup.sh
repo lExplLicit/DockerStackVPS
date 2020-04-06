@@ -1,4 +1,31 @@
 #!/bin/bash
+
+
+DIRECTORY=$1
+
+
+if [ -z ${DIRECTORY} ] || [ ! -r ${DIRECTORY} ] 
+then 
+echo "Bitte gültiges Verzeichnis angeben."
+exit 2
+else
+echo "ok"
+fi
+
+
+
+STR=${DIRECTORY}
+
+length=${#STR}
+last_char=${STR:length-1:1}
+
+[[ $last_char != "/" ]] && STR="$STR/"; :
+
+DIRECTORY=${STR}
+
+cd ${DIRECTORY}
+
+
 echo " "
 echo "------------------------------------------------------------------------"
 echo " "
