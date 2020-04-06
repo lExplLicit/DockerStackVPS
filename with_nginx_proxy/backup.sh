@@ -8,9 +8,8 @@ if [ -z ${DIRECTORY} ] || [ ! -r ${DIRECTORY} ]
 then 
 echo "Bitte gültiges Verzeichnis angeben."
 exit 2
-else
-echo "ok"
 fi
+
 
 
 
@@ -24,6 +23,12 @@ last_char=${STR:length-1:1}
 DIRECTORY=${STR}
 
 cd ${DIRECTORY}
+
+if [ ! -r "volumes/" ] 
+then 
+echo "Kein Volume Verzeichnis gefunden!"
+exit 2
+fi
 
 
 echo " "
