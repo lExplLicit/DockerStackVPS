@@ -76,6 +76,14 @@ then
     touch ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
     chmod +x ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
     echo "#!/bin/bash" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+
+    echo "FILE=docker-compose.yml" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    echo "if [ ! -f "$FILE" ]" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    echo "then" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    echo "echo \"$FILE does not exist. Please run this script in the container directory\"" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    echo "exit 2" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    echo "fi" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+
     echo "docker-compose down" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
     echo "rsync -Aaxv --delete backups/${DIRECTORY_NAME}_${DATESTRING}/ volumes/" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
     echo "docker-compose up -d" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
@@ -84,7 +92,7 @@ then
     cd volumes/
     rm -f restore.sh
     cd ..
-    
+
     echo "     Backup kann mit:"
     echo " "
     echo "     cd ${DIRECTORY_NAME}/ && ./backups/${DIRECTORY_NAME}_${DATESTRING}/restore.sh"
