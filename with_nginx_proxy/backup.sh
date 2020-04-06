@@ -11,35 +11,37 @@ exit 2
 fi
 
 
-STR=${DIRECTORY}
+STR1=${DIRECTORY}
 
-length=${#STR}
-last_char=${STR:length-1:1}
+length=${#STR1}
+last_char=${STR1:length-1:1}
 
-[[ $last_char != "/" ]] && STR="$STR/"; :
+[[ $last_char != "/" ]] && STR1="$STR1/"; :
 
-DIRECTORY=${STR}
+DIRECTORY=${STR1}
 
 
-STR=${DIRECTORY}
+STR2=${DIRECTORY}
 
-length=${#STR}
-last_char=${STR:length-1:1}
+length=${#STR2}
+last_char=${STR2:length-1:1}
 
-[[ $last_char == "/" ]] && STR=${STR:0:length-1}; :
+[[ $last_char == "/" ]] && STR2=${STR2:0:length-1}; :
 
-DIRECTORY_NAME=${STR}
-
+DIRECTORY_NAME=${STR2}
 
 
 cd ${DIRECTORY}
 mkdir -p backups
+
 
 if [ ! -r "volumes/" ] 
 then 
 echo "Kein Volumes-Ordner in ${DIRECTORY}/ gefunden!"
 exit 2
 fi
+
+
 
 
 echo " "
