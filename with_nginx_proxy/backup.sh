@@ -84,21 +84,19 @@ then
     #echo "     Backup muss mit 'unzip -X -K backups/<filename>' entpackt"
     #echo "     und mit 'rsync -Aaxv --delete backups/<backupname>/ volumes/' wieder"
     echo "     Backup kann mit:"
-    echo " "
 
     cd backups/
-    rm -f restorescript_*
-    touch restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
-    chmod +x restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
+    rm -f ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
+    touch ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
+    chmod +x ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
 
-    echo "#!/bin/bash" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
-    #echo "cd ${DIRECTORY}" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
-    echo "docker-compose down" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
-    echo "rsync -Aaxv --delete backups/${DIRECTORY_NAME}_${DATESTRING}/ volumes/" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
-    echo "docker-compose up -d" >> restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh
+    echo "#!/bin/bash" >> ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
+    echo "docker-compose down" >> ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
+    echo "rsync -Aaxv --delete backups/${DIRECTORY_NAME}_${DATESTRING}/ volumes/" >> ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
+    echo "docker-compose up -d" >> ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
     echo " "
     echo "     cd nextcloud/"
-    echo "     ./backups/restorescript_${DIRECTORY_NAME}_${DATESTRING}.sh"
+    echo "     ./backups/${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh"
     echo " "
     cd ..
 
