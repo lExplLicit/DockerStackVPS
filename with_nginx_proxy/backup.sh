@@ -58,48 +58,33 @@ DATESTRING=$(date +"%Y-%m-%d-%H-%M")
 docker-compose down &> /dev/null
 
 echo "     Backup wird durchgeführt..."
+echo " "
 
 rsync -Aax volumes/ backups/${DIRECTORY_NAME}_${DATESTRING}/ &> /dev/null
 
-# echo "     Backup wurde erstellt."
-echo " "
-#echo "     Backup wird komprimiert..."
-#echo " "
-
-#cd backups/
-#zip -r backup_${DATESTRING}.zip backup_${DATESTRING}/ &> /dev/null
-#rm -rf backup_${DATESTRING}/ &> /dev/null
-#cd ..
-
-#FILE="backups/backup_${DATESTRING}.zip"
 DIR="backups/${DIRECTORY_NAME}_${DATESTRING}"
-#if [ -f "$FILE" ]
 if [ -r "$DIR" ]
 then
     echo "     Backup wurde erstellt: "
     echo " "
-    #echo "     backups/backup_${DATESTRING}.zip"
     echo "     backups/${DIRECTORY_NAME}_${DATESTRING}/"
     echo " "
-    #echo "     Backup muss mit 'unzip -X -K backups/<filename>' entpackt"
-    #echo "     und mit 'rsync -Aaxv --delete backups/<backupname>/ volumes/' wieder"
-    echo "     Backup kann mit:"
+
 
     cd backups/
-    rm -f ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
-    touch ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
-    chmod +x ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
-
-    echo "#!/bin/bash" >> ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
-    echo "docker-compose down" >> ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
-    echo "rsync -Aaxv --delete backups/${DIRECTORY_NAME}_${DATESTRING}/ volumes/" >> ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
-    echo "docker-compose up -d" >> ${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh
-    echo " "
-    echo "     cd nextcloud/"
-    echo "     ./backups/${DIRECTORY_NAME}_${DATESTRING}/restorescript.sh"
-    echo " "
+    rm -f ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    touch ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    chmod +x ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    echo "#!/bin/bash" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    echo "docker-compose down" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    echo "rsync -Aaxv --delete backups/${DIRECTORY_NAME}_${DATESTRING}/ volumes/" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    echo "docker-compose up -d" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
     cd ..
 
+    echo "     Backup kann mit:"
+    echo " "
+    echo "     cd ${DIRECTORY_NAME}/ && ./backups/${DIRECTORY_NAME}_${DATESTRING}/restore.sh"
+    echo " "
     echo "     wieder eingespielt werden. "
     echo " "
     echo "------------------------------------------------------------------------"
