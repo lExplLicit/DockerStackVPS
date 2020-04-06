@@ -87,8 +87,8 @@ then
     echo "docker-compose down" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
     echo "rsync -Aaxv --delete backups/${DIRECTORY_NAME}_${DATESTRING}/ volumes/" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
     echo "docker-compose up -d" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
-    echo "cd volumes/"
-    echo "rm -f restore.sh"
+    echo "cd volumes/" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
+    echo "rm -f restore.sh" >> ${DIRECTORY_NAME}_${DATESTRING}/restore.sh
 
   
     cd ..
