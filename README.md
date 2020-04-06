@@ -24,8 +24,13 @@ cp nextcloud/.env.sample nextcloud/.env && nano nextcloud/.env
 
 ```
 ./backup.sh <container_dir>
+```
 
-Example:
+## Restore container (with_nginx_proxy)
 
-./backup.sh nextcloud/
+```
+    cd <container_dir>
+    docker-compose down
+    rsync -Aaxv --delete backups/<backupname>/ volumes/
+    docker-compose up -d
 ```
