@@ -62,7 +62,7 @@ then
     echo " "
     echo "     backups/backup_full_${DATESTRING}.zip"
     echo " "
-    echo "     Backup muss mit 'unzip -X -K <filename>' entpackt"
+    echo "     Backup muss mit 'unzip -X -K backups/<filename>' entpackt"
     echo "     und mit 'rsync -Aaxv --delete backups/<backupname>/ volumes/' wieder"
     echo "     eingespielt werden. "
     echo " "
