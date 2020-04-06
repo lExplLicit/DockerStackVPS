@@ -20,6 +20,18 @@ last_char=${STR:length-1:1}
 
 DIRECTORY=${STR}
 
+
+STR=${DIRECTORY}
+
+length=${#STR}
+last_char=${STR:length-1:1}
+
+[[ $last_char == "/" ]] && STR=${STR:0:length-1}; :
+
+DIRECTORY_NAME=${STR}
+
+
+
 cd ${DIRECTORY}
 mkdir -p backups
 
@@ -45,7 +57,7 @@ docker-compose down &> /dev/null
 
 echo "     Backup wird durchgeführt..."
 
-rsync -Aax volumes/ backups/backup_full_${DATESTRING}/ &> /dev/null
+rsync -Aax volumes/ backups/${DIRECTORY_NAME}_full_${DATESTRING}/ &> /dev/null
 
 # echo "     Backup wurde erstellt."
 echo " "
@@ -58,14 +70,14 @@ echo " "
 #cd ..
 
 #FILE="backups/backup_full_${DATESTRING}.zip"
-DIR="backups/backup_full_${DATESTRING}"
+DIR="backups/${DIRECTORY_NAME}_full_${DATESTRING}"
 #if [ -f "$FILE" ]
 if [ -r "$DIR" ]
 then
     echo "     Backup wurde erstellt: "
     echo " "
     #echo "     backups/backup_full_${DATESTRING}.zip"
-    echo "     backups/backup_full_${DATESTRING}/"
+    echo "     backups/${DIRECTORY_NAME}_full_${DATESTRING}/"
     echo " "
     #echo "     Backup muss mit 'unzip -X -K backups/<filename>' entpackt"
     #echo "     und mit 'rsync -Aaxv --delete backups/<backupname>/ volumes/' wieder"
@@ -73,7 +85,7 @@ then
     echo " "
     echo "     cd ${DIRECTORY}"
     echo "     docker-compose down"
-    echo "     rsync -Aaxv --delete backups/<backupname>/ volumes/"
+    echo "     rsync -Aaxv --delete backups/backups/${DIRECTORY_NAME}_full_${DATESTRING}/ volumes/"
     echo "     docker-compose up -d"
     echo " "
     echo "     wieder eingespielt werden. "
