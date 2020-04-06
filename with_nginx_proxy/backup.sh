@@ -48,14 +48,29 @@ echo " "
 echo "     Backup wird komprimiert..."
 echo " "
 zip -r backup_full_${DATESTRING}.zip backup_full_${DATESTRING}/ &> /dev/null
-echo "     Backup wurde erstellt: "
-echo " "
-echo "     backup_full_${DATESTRING}.zip"
-echo " "
-echo "     Backup kann mit 'unzip -X -K <filename>' wiederhergestellt"
-echo "     und mit 'rsync -Aaxv --delete <backupname> volumes/' wieder"
-echo "     eingespielt werden. "
-echo " "
+
+FILE="backup_full_${DATESTRING}.zip"
+if [ -f "$FILE" ]
+then
+    echo "     Backup wurde erstellt: "
+    echo " "
+    echo "     backup_full_${DATESTRING}.zip"
+    echo " "
+    echo "     Backup kann mit 'unzip -X -K <filename>' wiederhergestellt"
+    echo "     und mit 'rsync -Aaxv --delete <backupname> volumes/' wieder"
+    echo "     eingespielt werden. "
+    echo " "
+else
+    echo "     Backup wurde nicht erstellt!"
+    echo " "
+    echo "     Es ist ein Fehler aufgetreten."
+    echo " "
+fi
+
+
+
+
+
 
 rm -rf backup_full_${DATESTRING}/
 
