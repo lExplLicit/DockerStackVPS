@@ -27,7 +27,7 @@ echo "     backup_full_${DATESTRING}.zip"
 echo " "
 echo "     Backup kann mit 'unzip -X -K <filename>' wiederhergestellt"
 echo "     und mit 'rsync -Aaxv --delete <backupname> volumes/' wieder"
-echo "     eingespielt werden."
+echo "     eingespielt werden. "
 echo " "
 
 rm -rf backup_full_${DATESTRING}/
