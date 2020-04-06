@@ -49,24 +49,29 @@ rsync -Aax volumes/ backups/backup_full_${DATESTRING}/ &> /dev/null
 
 echo "     Backup wurde erstellt."
 echo " "
-echo "     Backup wird komprimiert..."
-echo " "
+#echo "     Backup wird komprimiert..."
+#echo " "
 
-cd backups/
-zip -r backup_full_${DATESTRING}.zip backup_full_${DATESTRING}/ &> /dev/null
-rm -rf backup_full_${DATESTRING}/ &> /dev/null
-cd ..
+#cd backups/
+#zip -r backup_full_${DATESTRING}.zip backup_full_${DATESTRING}/ &> /dev/null
+#rm -rf backup_full_${DATESTRING}/ &> /dev/null
+#cd ..
 
-FILE="backups/backup_full_${DATESTRING}.zip"
-if [ -f "$FILE" ]
+#FILE="backups/backup_full_${DATESTRING}.zip"
+DIR="backups/backup_full_${DATESTRING}"
+#if [ -f "$FILE" ]
+if [ -r "$DIR" ]
 then
     echo "     Backup wurde erstellt: "
     echo " "
-    echo "     backups/backup_full_${DATESTRING}.zip"
+    #echo "     backups/backup_full_${DATESTRING}.zip"
+    echo "     backups/backup_full_${DATESTRING}/"
     echo " "
-    echo "     Backup muss mit 'unzip -X -K backups/<filename>' entpackt"
-    echo "     und mit 'rsync -Aaxv --delete backups/<backupname>/ volumes/' wieder"
-    echo "     eingespielt werden. "
+    #echo "     Backup muss mit 'unzip -X -K backups/<filename>' entpackt"
+    #echo "     und mit 'rsync -Aaxv --delete backups/<backupname>/ volumes/' wieder"
+    echo "     Backup kann mit:"
+    echo "     'rsync -Aaxv --delete backups/<backupname>/ volumes/'"
+    echo "     wieder eingespielt werden. "
     echo " "
     echo "------------------------------------------------------------------------"
     echo " "
