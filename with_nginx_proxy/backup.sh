@@ -51,9 +51,11 @@ echo "     Backup wurde erstellt."
 echo " "
 echo "     Backup wird komprimiert..."
 echo " "
-zip -r backups/backup_full_${DATESTRING}.zip backup_full_${DATESTRING}/ &> /dev/null
 
-rm -rf backups/backup_full_${DATESTRING}/ &> /dev/null
+cd backups/
+zip -r backup_full_${DATESTRING}.zip backup_full_${DATESTRING}/ &> /dev/null
+rm -rf backup_full_${DATESTRING}/ &> /dev/null
+cd ..
 
 FILE="backups/backup_full_${DATESTRING}.zip"
 if [ -f "$FILE" ]
