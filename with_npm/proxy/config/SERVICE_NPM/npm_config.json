@@ -1,0 +1,10 @@
+{
+  "database": {
+    "engine": "mysql",
+    "host": "service_npm_db",
+    "name": "npm_database",
+    "user": "npm_user",
+    "password": "kYFxNSVDtJ2kgKf",
+    "port": 3306
+  }
+}

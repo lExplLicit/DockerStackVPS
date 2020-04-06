@@ -1,0 +1,39 @@
+version: '3.5'
+
+services:
+
+  service_npm_db:
+    container_name: SERVICE_NPM_DB
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ENV_MYSQL_ROOT_PASS}
+      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
+      MYSQL_USER: ${ENV_MYSQL_USER}
+      MYSQL_PASSWORD: ${ENV_MYSQL_PASS}
+    volumes:
+      - ./volumes/SERVICE_NPM_DB/mysql:/var/lib/mysql
+    networks:
+      - service_network
+      
+  service_npm:
+    container_name: SERVICE_NPM
+    image: jc21/nginx-proxy-manager:latest
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+      - ${ENV_NPM_UI_PORT}:81
+    volumes:
+      - ./config/SERVICE_NPM/npm_config.json:/app/config/production.json
+      - ./volumes/SERVICE_NPM/data:/data
+      - ./volumes/SERVICE_NPM/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - service_npm_db
+    networks:
+      - service_network
+
+networks:
+  service_network:
+    external: true
+    driver: bridge
