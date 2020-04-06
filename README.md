@@ -18,3 +18,14 @@ cp nextcloud/.env.sample nextcloud/.env && nano nextcloud/.env
 
 ./up.sh
 ```
+
+
+## Backup container (with_nginx_proxy)
+
+```
+./backup.sh <container_dir>
+
+Example:
+
+./backup.sh nextcloud/
+```
