@@ -11,8 +11,7 @@ services:
        - LOG_FILE='/data/bitwarden.log'
        - SIGNUPS_ALLOWED=true   
        - VIRTUAL_HOST=${ENV_VIRTUAL_HOST}
-       - LETSENCRYPT_HOST=${ENV_VIRTUAL_HOST}
-       - LETSENCRYPT_EMAIL=${ENV_LETSENCRYPT_EMAIL}  
+       - LETSENCRYPT_HOST=${ENV_VIRTUAL_HOST}  
      networks:
       - service_network
  

@@ -32,7 +32,6 @@ services:
       - MYSQL_HOST=service_nextcloud_db
       - VIRTUAL_HOST=${ENV_VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${ENV_VIRTUAL_HOST}
-      - LETSENCRYPT_EMAIL=${ENV_LETSENCRYPT_EMAIL}
     networks:
       - service_network
 
