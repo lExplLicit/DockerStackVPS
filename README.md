@@ -21,6 +21,10 @@ cp nextcloud/.env.sample nextcloud/.env && nano nextcloud/.env
 # For Nextcloud 18.0.3
 docker exec -u www-data SERVICE_NEXTCLOUD php occ db:add-missing-indices
 docker exec -u www-data SERVICE_NEXTCLOUD php occ db:convert-filecache-bigint
+
+# Add 's' to http in 'overwrite.cli.url'
+# and add 'overwriteprotocol' => 'https'
+nano nextcloud/volumes/SERVICE_NEXTCLOUD/config/config.php
 ```
 
 
