@@ -22,9 +22,35 @@ cp nextcloud/.env.sample nextcloud/.env && nano nextcloud/.env
 
 # Add 's' to 'http' in 'overwrite.cli.url' and add this line: 'overwriteprotocol' => 'https'
 nano nextcloud/volumes/SERVICE_NEXTCLOUD/config/config.php
+
 # Run following occ comands
 docker exec -u www-data SERVICE_NEXTCLOUD php occ db:add-missing-indices
 docker exec -u www-data SERVICE_NEXTCLOUD php occ db:convert-filecache-bigint
+
+# Install Turn Server for Talk
+Open Firewall ports: 3478,3479 TCP and 3478,3479 UDP
+
+sudo apt install coturn
+sudo sed -i '/TURNSERVER_ENABLED/c\TURNSERVER_ENABLED=1' /etc/default/coturn
+
+# Add configuration to /etc/turnserver.conf:
+  listening-ip=0.0.0.0
+  listening-port=3478
+  fingerprint
+  use-auth-secret
+  static-auth-secret=<yourChosen/GeneratedSecret>
+  realm=your.domain.tld
+  total-quota=100
+  bps-capacity=0
+  stale-nonce
+  no-multicast-peers
+
+systemctl restart coturn
+
+# Nextcloud Settings
+TURN server: your.domain.tld:3478
+TURN secret: <yourChosen/GeneratedSecret>
+UDP and TCP
 ```
 
 
