@@ -5,15 +5,16 @@ DockerStack with Nextcloud, Bitwarden and Nginx as a Proxy.
 
 ```bash
 git clone https://github.com/lExplLicit/DockerStackVPS.git
-
 cd DockerStackVPS/with_nginx_proxy
-
 chmod +x backup.sh down.sh up.sh
 
+# Settings for Letsencrypt
 cp nginx-proxy/.env.sample nginx-proxy/.env && nano nginx-proxy/.env
 
+# Settings for Bitwarden
 cp bitwarden/.env.sample bitwarden/.env && nano bitwarden/.env
 
+# Setting for Nextcloud
 cp nextcloud/.env.sample nextcloud/.env && nano nextcloud/.env
 
 ./up.sh
