@@ -30,18 +30,22 @@ docker exec -u www-data SERVICE_NEXTCLOUD php occ db:convert-filecache-bigint
 ```
 
 ### Install Turn Server for Nextcloud Talk
-Open Firewall ports: 3478 TCP and 3478 UDP
+Open Firewall ports: 3478 TCP and 3478 UDP first
 ```bash
 sudo apt install coturn
 sudo sed -i '/TURNSERVER_ENABLED/c\TURNSERVER_ENABLED=1' /etc/default/coturn
 
-# Add configuration to /etc/turnserver.conf:
+# Generate Secret
+openssl rand -hex 32
+
+# Add this configuration to /etc/turnserver.conf:
+  
   listening-ip=0.0.0.0
   listening-port=3478
   fingerprint
   use-auth-secret
-  static-auth-secret=<yourChosen/GeneratedSecret>
-  realm=your.domain.tld
+  static-auth-secret=<GeneratedSecret>
+  realm=<your.domain.tld>
   total-quota=100
   bps-capacity=0
   stale-nonce
@@ -49,12 +53,11 @@ sudo sed -i '/TURNSERVER_ENABLED/c\TURNSERVER_ENABLED=1' /etc/default/coturn
 
 systemctl restart coturn
 
-# Nextcloud Settings
-TURN server: your.domain.tld:3478
-TURN secret: <yourChosen/GeneratedSecret>
+# Apply Nextcloud Settings
+TURN server: <your.domain.tld>:3478
+TURN secret: <GeneratedSecret>
 UDP and TCP
 ```
-
 
 ## Backup container (with_nginx_proxy)
 
