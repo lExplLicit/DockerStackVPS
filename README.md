@@ -1,6 +1,13 @@
 # DockerStackVPS
 DockerStack with Nextcloud, Bitwarden and Nginx as a Proxy.
 
+You will need:
+
+* A domain for each service pointing to your server
+* docker
+* docker-compose
+* git, zip, unzip, nano, rsync
+
 ## Installation (with_nginx_proxy)
 
 ```bash
