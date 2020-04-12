@@ -1,5 +1,5 @@
 version: '3.5'
-services:    
+services:
 
   service_bitwarden:
      container_name: SERVICE_BITWARDEN
@@ -9,13 +9,17 @@ services:
        - ./volumes/SERVICE_BITWARDEN/data:/data
      environment:
        - LOG_FILE='/data/bitwarden.log'
-       - SIGNUPS_ALLOWED=true   
        - VIRTUAL_HOST=${ENV_VIRTUAL_HOST}
-       - LETSENCRYPT_HOST=${ENV_VIRTUAL_HOST}  
+       - LETSENCRYPT_HOST=${ENV_VIRTUAL_HOST}
+       - SMTP_HOST=${ENV_SMTP_HOST} 
+       - SMTP_FROM=${ENV_SMTP_FROM}            
+       - SMTP_USERNAME=${ENV_SMTP_USER}
+       - SMTP_PASSWORD=${ENV_SMTP_USER}    
+       - DOMAIN=https://${ENV_VIRTUAL_HOST}
+       - SIGNUPS_ALLOWED=${ENV_SIGNUPS_ALLOWED}
      networks:
       - service_network
- 
+
 networks:
   service_network:
-    external: true
-    driver: bridge
+    external: true    driver: bridge
