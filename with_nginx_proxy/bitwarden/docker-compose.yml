@@ -14,7 +14,7 @@ services:
        - SMTP_HOST=${ENV_SMTP_HOST} 
        - SMTP_FROM=${ENV_SMTP_FROM}            
        - SMTP_USERNAME=${ENV_SMTP_USER}
-       - SMTP_PASSWORD=${ENV_SMTP_USER}    
+       - SMTP_PASSWORD=${ENV_SMTP_PASS}    
        - DOMAIN=https://${ENV_VIRTUAL_HOST}
        - SIGNUPS_ALLOWED=${ENV_SIGNUPS_ALLOWED}
      networks:
