@@ -1,9 +1,9 @@
 # DockerStackVPS
-DockerStack with Nextcloud, Bitwarden, Downloadserver with noVNC UI and Apache Downloadserver and Nginx as a Proxy.
+DockerStack with Nextcloud, Bitwarden, VNC-Downloadserver and Nginx as a Proxy.
 
 You will need:
 
-* A domain for each service pointing to your server
+* A domain pointing to your server
 * docker
 * docker-compose
 * git, zip, unzip, nano, rsync
