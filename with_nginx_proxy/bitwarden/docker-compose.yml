@@ -17,6 +17,10 @@ services:
        - SMTP_PASSWORD=${ENV_SMTP_PASS}    
        - DOMAIN=https://${ENV_VIRTUAL_HOST}
        - SIGNUPS_ALLOWED=${ENV_SIGNUPS_ALLOWED}
+<<<<<<< HEAD
+=======
+       - TZ=Europe/Berlin
+>>>>>>> added dl server
      networks:
       - service_network
 

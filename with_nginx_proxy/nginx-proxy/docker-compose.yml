@@ -10,6 +10,11 @@ services:
     ports:
       - "80:80"
       - "443:443"
+<<<<<<< HEAD
+=======
+    environment:
+      - TZ=Europe/Berlin
+>>>>>>> added dl server
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./config/unrestricted_body_size.conf:/etc/nginx/conf.d/unrestrict_body_size.conf
@@ -29,6 +34,10 @@ services:
       - nginx-proxy
     environment:
       - DEFAULT_EMAIL=${ENV_LETSENCRYPT_DEFAULT_EMAIL}
+<<<<<<< HEAD
+=======
+      - TZ=Europe/Berlin
+>>>>>>> added dl server
     volumes:
       - ./volumes/SERVICE_NGINX_PROXY_DATA/conf.d:/etc/nginx/conf.d
       - ./volumes/SERVICE_NGINX_PROXY_DATA/vhost.d:/etc/nginx/vhost.d

@@ -1,5 +1,9 @@
 # DockerStackVPS
+<<<<<<< HEAD
 DockerStack with Nextcloud, Bitwarden and Nginx as a Proxy.
+=======
+DockerStack with Nextcloud, Bitwarden, Downloadserver with noVNC UI and Apache Downloadserver and Nginx as a Proxy.
+>>>>>>> added dl server
 
 You will need:
 
@@ -24,6 +28,11 @@ cp bitwarden/.env.sample bitwarden/.env && nano bitwarden/.env
 # Setting for Nextcloud
 cp nextcloud/.env.sample nextcloud/.env && nano nextcloud/.env
 
+<<<<<<< HEAD
+=======
+# Setting for Downloadserver
+cp downloadsrv/.env.sample downloadsrv/.env && nano downloadsrv/.env
+>>>>>>> added dl server
 ./up.sh
 ```
 

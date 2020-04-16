@@ -1,0 +1,34 @@
+version: '3.5'
+services:
+    ubuntu-desktop-lxde-vnc:
+       container_name: SERVICE_DOWNLOADSRV_VNC
+       restart: always
+       environment:
+           - VIRTUAL_HOST=${ENV_VIRTUAL_HOST_VNC}
+           - LETSENCRYPT_HOST=${ENV_VIRTUAL_HOST_VNC}
+           - TZ=Europe/Berlin
+       volumes:
+           - '/dev/shm:/dev/shm'
+           - './volumes/root_data:/root'
+       image: dorowu/ubuntu-desktop-lxde-vnc
+       networks:
+           - service_network
+
+    httpd-downloadsrv:
+        container_name: SERVICE_DOWNLOADSRV
+        restart: always
+        environment:
+            - VIRTUAL_HOST=${ENV_VIRTUAL_HOST_DL}
+            - LETSENCRYPT_HOST=${ENV_VIRTUAL_HOST_DL}
+            - TZ=Europe/Berlin
+        volumes:
+            - './config/my-httpd.conf:/usr/local/apache2/conf/httpd.conf'
+            - './volumes/root_data:/usr/local/apache2/htdocs/'
+        image: httpd:latest
+        networks:
+            - service_network
+
+networks:
+  service_network:
+    external: true
+    driver: bridge
