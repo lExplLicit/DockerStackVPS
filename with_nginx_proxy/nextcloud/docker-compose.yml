@@ -14,10 +14,7 @@ services:
       - MYSQL_DATABASE=${ENV_MYSQL_DATABASE}
       - MYSQL_USER=${ENV_MYSQL_USER}
       - MYSQL_PASSWORD=${ENV_MYSQL_PASS}
-<<<<<<< HEAD
-=======
       - TZ=Europe/Berlin
->>>>>>> added dl server
     networks:
       - service_network
       
@@ -36,10 +33,7 @@ services:
       - MYSQL_HOST=service_nextcloud_db
       - VIRTUAL_HOST=${ENV_VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${ENV_VIRTUAL_HOST}
-<<<<<<< HEAD
-=======
       - TZ=Europe/Berlin
->>>>>>> added dl server
     networks:
       - service_network
 

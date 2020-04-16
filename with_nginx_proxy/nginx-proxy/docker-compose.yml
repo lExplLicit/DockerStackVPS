@@ -10,11 +10,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
-<<<<<<< HEAD
-=======
     environment:
       - TZ=Europe/Berlin
->>>>>>> added dl server
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./config/unrestricted_body_size.conf:/etc/nginx/conf.d/unrestrict_body_size.conf
