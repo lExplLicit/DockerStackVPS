@@ -12,7 +12,7 @@ You will need:
 
 ```bash
 git clone https://github.com/lExplLicit/DockerStackVPS.git
-cd DockerStackVPS/with_nginx_proxy
+cd DockerStackVPS/
 chmod +x backup.sh down.sh up.sh
 
 # Settings for Letsencrypt
