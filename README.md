@@ -1,5 +1,5 @@
 # DockerStackVPS
-DockerStack with Nextcloud, Bitwarden, VNC-Downloadserver and Nginx as a Proxy.
+DockerStack with Nextcloud, Bitwarden, VNC-Downloadserver, Heimdall and Nginx as a Proxy.
 
 You will need:
 
