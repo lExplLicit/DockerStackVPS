@@ -29,7 +29,7 @@ cp downloadsrv/.env.sample downloadsrv/.env && nano downloadsrv/.env
 ./up.sh
 ```
 
-## Configuration for Nextcloud 18.0.3:
+## Configuration for Nextcloud:
 ```bash
 # Add 's' to 'http' in 'overwrite.cli.url' and add this line: 'overwriteprotocol' => 'https'
 nano nextcloud/volumes/SERVICE_NEXTCLOUD/config/config.php
