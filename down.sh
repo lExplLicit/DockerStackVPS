@@ -9,3 +9,9 @@ cd ..
 cd bitwarden
 docker-compose down
 cd ..
+cd heimdall
+docker-compose down
+cd ..
+cd downloadsrv
+docker-compose down
+cd ..
