@@ -8,7 +8,7 @@ You will need:
 * docker-compose
 * git, zip, unzip, nano, rsync
 
-## Installation (with_nginx_proxy)
+## Installation
 
 ```bash
 git clone https://github.com/lExplLicit/DockerStackVPS.git
@@ -69,13 +69,13 @@ TURN secret: <GeneratedSecret>
 UDP and TCP
 ```
 
-## Backup container (with_nginx_proxy)
+## Backup container
 
 ```bash
 ./backup.sh <container_dir>
 ```
 
-## Restore container (with_nginx_proxy)
+## Restore container
 
 ```bash
 cd <container_dir>
