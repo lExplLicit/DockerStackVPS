@@ -11,3 +11,9 @@ cd ..
 cd bitwarden
 docker-compose up -d
 cd ..
+cd heimdall
+docker-compose up -d
+cd ..
+cd downloadsrv
+docker-compose up -d
+cd ..
