@@ -25,7 +25,7 @@ cp bitwarden/.env.sample bitwarden/.env && nano bitwarden/.env
 cp nextcloud/.env.sample nextcloud/.env && nano nextcloud/.env
 
 # Setting for Heimdall
-cp heimdall/.env.sample heimdall/.env && nano nextcloud/.env
+cp heimdall/.env.sample heimdall/.env && nano heimdall/.env
 
 # Setting for Downloadserver
 cp downloadsrv/.env.sample downloadsrv/.env && nano downloadsrv/.env
