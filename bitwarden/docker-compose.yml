@@ -6,18 +6,17 @@ services:
      image: bitwardenrs/server:latest
      restart: always
      volumes:
-       - ./volumes/SERVICE_BITWARDEN/data:/data
+       - ./volumes/SERVICE_BITWARDEN:/data
      environment:
        - LOG_FILE='/data/bitwarden.log'
        - VIRTUAL_HOST=${ENV_VIRTUAL_HOST}
        - LETSENCRYPT_HOST=${ENV_VIRTUAL_HOST}
-       - SMTP_HOST=${ENV_SMTP_HOST} 
-       - SMTP_FROM=${ENV_SMTP_FROM}            
+       - SMTP_HOST=${ENV_SMTP_HOST}
+       - SMTP_FROM=${ENV_SMTP_FROM}
        - SMTP_USERNAME=${ENV_SMTP_USER}
-       - SMTP_PASSWORD=${ENV_SMTP_PASS}    
+       - SMTP_PASSWORD=${ENV_SMTP_PASS}
        - DOMAIN=https://${ENV_VIRTUAL_HOST}
        - SIGNUPS_ALLOWED=${ENV_SIGNUPS_ALLOWED}
-       - TZ=Europe/Berlin
      networks:
       - service_network
 
