@@ -1,0 +1,18 @@
+version: "3.5"
+services:
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: SERVICE_HEIMDALL
+    environment:
+      - VIRTUAL_HOST=${ENV_VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${ENV_VIRTUAL_HOST}
+      - TZ=Europe/Berlin
+    volumes:
+      - ./volumes/SERVICE_HEIMDALL:/config
+    restart: unless-stopped
+    networks:
+      - service_network
+networks:
+  service_network:
+    external: true
+    driver: bridge
