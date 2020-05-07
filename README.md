@@ -68,7 +68,7 @@ openssl rand -hex 32
 
 systemctl restart coturn
 
-# Apply Nextcloud Settings
+# Apply Nextcloud Settings (Settings > Talk)
 TURN server: <your.nextcloud-domain.tld>:3478
 TURN secret: <GeneratedSecret>
 UDP and TCP
