@@ -53,7 +53,7 @@ sudo sed -i '/TURNSERVER_ENABLED/c\TURNSERVER_ENABLED=1' /etc/default/coturn
 # Generate Secret
 openssl rand -hex 32
 
-# Add this configuration to /etc/turnserver.conf:
+# Add this configuration to the top of /etc/turnserver.conf:
   
   listening-ip=0.0.0.0
   listening-port=3478
