@@ -37,6 +37,7 @@ cp downloadsrv/.env.sample downloadsrv/.env && nano downloadsrv/.env
 # If you want to user OnlyOffice behind the Proxy, you need to make following changes and restart the container.
 # Add 's' to 'http' in 'overwrite.cli.url' and add this line: 'overwriteprotocol' => 'https'
 nano nextcloud/volumes/SERVICE_NEXTCLOUD/config/config.php
+cd nextcloud && docker-compose restart
 
 # Run following occ comands
 docker exec -u www-data SERVICE_NEXTCLOUD php occ db:add-missing-indices
@@ -59,7 +60,7 @@ openssl rand -hex 32
   fingerprint
   use-auth-secret
   static-auth-secret=<GeneratedSecret>
-  realm=<your.domain.tld>
+  realm=<your.nextcloud-domain.tld>
   total-quota=100
   bps-capacity=0
   stale-nonce
@@ -68,7 +69,7 @@ openssl rand -hex 32
 systemctl restart coturn
 
 # Apply Nextcloud Settings
-TURN server: <your.domain.tld>:3478
+TURN server: <your.nextcloud-domain.tld>:3478
 TURN secret: <GeneratedSecret>
 UDP and TCP
 ```
