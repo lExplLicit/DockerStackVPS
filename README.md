@@ -34,6 +34,7 @@ cp downloadsrv/.env.sample downloadsrv/.env && nano downloadsrv/.env
 
 ## Configuration for Nextcloud:
 ```bash
+# If you want to user OnlyOffice behind the Proxy, you need to make following changes and restart the container.
 # Add 's' to 'http' in 'overwrite.cli.url' and add this line: 'overwriteprotocol' => 'https'
 nano nextcloud/volumes/SERVICE_NEXTCLOUD/config/config.php
 
